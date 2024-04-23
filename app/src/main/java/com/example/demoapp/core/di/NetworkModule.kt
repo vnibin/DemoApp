@@ -1,6 +1,9 @@
 package com.example.demoapp.core.di
 
 import com.example.demoapp.catmodule.data.datasource.remote.ApiInterface
+import com.example.demoapp.catmodule.data.datasource.remote.CatListRepoImpl
+import com.example.demoapp.catmodule.data.model.CatResModel
+import com.example.demoapp.catmodule.data.repository.CatListRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,7 +14,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class NetworkModule {
+object NetworkModule {
 
     @Singleton
     @Provides
@@ -27,6 +30,13 @@ class NetworkModule {
     fun provideApi(retrofit: Retrofit): ApiInterface
     {
         return retrofit.create(ApiInterface::class.java)
+    }
+
+    @Singleton
+    @Provides
+    fun provideRepository(apiInterface: ApiInterface) : CatListRepo
+    {
+        return CatListRepoImpl(apiInterface)
     }
 
 

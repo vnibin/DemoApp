@@ -1,7 +1,7 @@
 package com.example.demoapp.catmodule.domain
 
 import com.example.demoapp.catmodule.data.model.CatResModel
-import com.example.demoapp.catmodule.data.repository.CatListRepository
+import com.example.demoapp.catmodule.data.repository.CatListRepo
 import com.example.demoapp.core.common.AppConstants.Companion.RES_200
 import com.example.demoapp.core.common.AppConstants.Companion.RES_400
 import com.example.demoapp.core.common.AppConstants.Companion.RES_401
@@ -12,7 +12,9 @@ import com.example.demoapp.core.network.ResponseApi
 import retrofit2.Response
 import javax.inject.Inject
 
-class CatListRemoteUseCase @Inject constructor(private val repository: CatListRepository)  : NetworkUseCase() {
+class CatListRemoteUseCase @Inject constructor(private val repository: CatListRepo)  : NetworkUseCase() {
+
+
     override val isAvailInternet: Boolean
         get() = TODO("Not yet implemented")
 
@@ -67,6 +69,8 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
             else -> responseFail(apiTypestatus)
         }
     }
+
+
 
 
 }
