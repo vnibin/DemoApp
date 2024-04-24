@@ -25,10 +25,10 @@ class MainActivity : ComponentActivity() {
             DemoAppTheme {
                 UserScreen()
 
-                // A surface container using the 'background' color from the theme
-
             }
         }
     }
+
+
 }
 
