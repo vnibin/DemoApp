@@ -18,7 +18,7 @@ import javax.inject.Inject
 class CatListViewmodel @Inject constructor(val catListRemoteUseCase: CatListRemoteUseCase) : ViewModel() {
 
     private val _userState = MutableStateFlow<ResponseApi>(ResponseApi.loading(Status.CATDETAILS))
-    val userState: StateFlow<ResponseApi> = _userState
+    val catListState: StateFlow<ResponseApi> = _userState
     init {
 
         viewModelScope.launch(Dispatchers.IO) {
