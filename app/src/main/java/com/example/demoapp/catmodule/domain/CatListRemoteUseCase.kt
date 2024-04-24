@@ -30,12 +30,12 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
     }
 
     override fun response401(apiTypestatus: Status): ResponseApi {
-        return ResponseApi.fail("Something Went Wrong Please try again", apiTypestatus)
+        return ResponseApi.authFail( apiTypestatus)
 
     }
 
     override fun responseFail400( status: Status): ResponseApi {
-        return ResponseApi.fail("Something Went Wrong Please try again", status)
+        return ResponseApi.fail400("Something Went Wrong Please try again", status)
 
     }
 

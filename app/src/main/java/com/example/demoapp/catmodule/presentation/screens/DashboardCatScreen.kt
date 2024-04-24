@@ -34,7 +34,7 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
     val userState by catlistViewmodel.catListState.collectAsState()
 
 
-        when (userState.status) {
+    when (userState.status) {
             Status.LOADING -> {
                 CircularProgressBar()
 
@@ -50,6 +50,11 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
                 ShowErrorText(errorMsg = userState.data.toString())
 
             }
+
+        Status.AUTH_FAIL -> {
+            //we'll call the token generation api and again call the same api
+
+        }
 
             else -> {
                 ShowErrorText(errorMsg = userState.data.toString())

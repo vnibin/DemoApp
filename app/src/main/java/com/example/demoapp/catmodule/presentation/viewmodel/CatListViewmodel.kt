@@ -17,18 +17,30 @@ import javax.inject.Inject
 @HiltViewModel
 class CatListViewmodel @Inject constructor(val catListRemoteUseCase: CatListRemoteUseCase) : ViewModel() {
 
-    private val _userState = MutableStateFlow<ResponseApi>(ResponseApi.loading(Status.CATDETAILS))
-    val catListState: StateFlow<ResponseApi> = _userState
+    private val _catListState = MutableStateFlow<ResponseApi>(ResponseApi.loading(Status.CATDETAILS))
+    val catListState: StateFlow<ResponseApi> = _catListState
     init {
+        getCatData()
 
+
+    }
+
+
+    fun getCatData()
+    {
         viewModelScope.launch(Dispatchers.IO) {
+            val result:ResponseApi = catListRemoteUseCase.getCatData()
+
             withContext(Dispatchers.Main){
-                val result:ResponseApi = catListRemoteUseCase.getCatData()
-                _userState.value = when (result.status)
+                _catListState.value = when (result.status)
                 {
                     Status.SUCCESS->
                     {
                         ResponseApi.success(result.data as List<CatResModel>,Status.CATDETAILS)
+                    }
+                    Status.AUTH_FAIL->
+                    {
+                        ResponseApi.authFail(Status.CATDETAILS)
                     }
                     else->
                     {
@@ -41,8 +53,6 @@ class CatListViewmodel @Inject constructor(val catListRemoteUseCase: CatListRemo
         }
 
     }
-
-
 
 
 }
