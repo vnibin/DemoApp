@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class CatListRepoImpl @Inject constructor(val apiInterface: ApiInterface) : CatListRepo {
     override suspend fun getCatData(): Response<List<CatResModel>> {
-        return apiInterface.getAllCats()
+        return apiInterface.getAllCats(10)
 
     }
 }

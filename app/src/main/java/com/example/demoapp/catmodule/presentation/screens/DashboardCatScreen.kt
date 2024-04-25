@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
+import com.example.demoapp.R
 import com.example.demoapp.catmodule.data.model.CatResModel
 import com.example.demoapp.catmodule.presentation.viewmodel.CatListViewmodel
 import com.example.demoapp.core.common.Status
@@ -41,7 +42,7 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
             }
 
             Status.SUCCESS -> {
-                val catlist = userState.data as List<CatResModel>
+            val catlist = userState.data as List<CatResModel>
                 ShowList(catlist = catlist)
 
             }
@@ -90,13 +91,18 @@ fun ShowList(catlist: List<CatResModel>) {
 fun ImageItem(imageUrl: String) {
     val painter = rememberImagePainter(data = imageUrl, builder = {
         transformations(CircleCropTransformation())
-    })
+       //error(R.drawable.error_img)
+
+    }
+    )
+
 
     CoilImage(
         painter = painter,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier.size(150.dp)
+        modifier = Modifier.size(150.dp),
+
     )
 }
 
@@ -111,7 +117,8 @@ fun CoilImage(
         painter = painter,
         contentDescription = contentDescription,
         modifier = modifier,
-        contentScale = contentScale
+        contentScale = contentScale,
+        
     )
 }
 

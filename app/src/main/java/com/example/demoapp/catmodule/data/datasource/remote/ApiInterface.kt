@@ -3,10 +3,11 @@ package com.example.demoapp.catmodule.data.datasource.remote
 import com.example.demoapp.catmodule.data.model.CatResModel
 import retrofit2.Response
 import retrofit2.http.GET
+import retrofit2.http.Query
 
 interface ApiInterface {
 
-    @GET("v1/images/search?limit=10")
-    suspend fun getAllCats() : Response<List<CatResModel>>
+    @GET("v1/images/search")
+    suspend fun getAllCats(@Query("limit")limit:Int) : Response<List<CatResModel>>
 
 }
