@@ -18,9 +18,12 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
     override val isAvailInternet: Boolean
         get() = TODO("Not yet implemented")
 
+    //If we have encrypted String format,we can make common handler for all the api's.
+    //as of now single api is used so it will take response of that type
     override fun response200(response: Response<List<CatResModel>>, status: Status): ResponseApi {
 
-        if (status == Status.CATDETAILS) {
+        //we can check the api type
+        if (status == Status.CATDETAILS)  {
             val res =response.body()
             return ResponseApi.success(res as List<CatResModel>, status)
         }
@@ -35,7 +38,7 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
     }
 
     override fun responseFail400( status: Status): ResponseApi {
-        return ResponseApi.fail400("Something Went Wrong Please try again", status)
+        return ResponseApi.fail400("Bad Request", status)
 
     }
 
@@ -45,10 +48,10 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
 
 
     suspend fun getCatData() : ResponseApi {
-        val response : Response<List<CatResModel>> =  repository.getCatData()
+        val response  =  repository.getCatData()
         var responseApi:ResponseApi?=null
 
-        if(response.isSuccessful)
+        if(response.isSuccessful && response.body()!=null)
         {
           responseApi= handleResponse(response,Status.CATDETAILS)
 

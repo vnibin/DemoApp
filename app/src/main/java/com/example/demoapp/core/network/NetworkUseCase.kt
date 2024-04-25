@@ -9,6 +9,8 @@ abstract class NetworkUseCase {
 
     abstract val isAvailInternet: Boolean
 
+    //If we have encrypted String format,we can make common handler for all the api's.
+    //as of now single api is used so it will take response of that type
     abstract fun response200(response: Response<List<CatResModel>>, status: Status): ResponseApi
 
     abstract fun response401(apiTypestatus: Status): ResponseApi
