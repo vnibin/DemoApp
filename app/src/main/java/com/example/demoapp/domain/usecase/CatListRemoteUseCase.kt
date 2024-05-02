@@ -1,7 +1,7 @@
-package com.example.demoapp.catmodule.domain
+package com.example.demoapp.domain.usecase
 
-import com.example.demoapp.catmodule.data.model.CatResModel
-import com.example.demoapp.catmodule.data.repository.CatListRepo
+import com.example.demoapp.domain.model.CatResModel
+import com.example.demoapp.domain.repository.CatListRepo
 import com.example.demoapp.core.common.AppConstants.Companion.RES_200
 import com.example.demoapp.core.common.AppConstants.Companion.RES_400
 import com.example.demoapp.core.common.AppConstants.Companion.RES_401
@@ -20,12 +20,13 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
 
     //If we have encrypted String format,we can make common handler for all the api's.
     //as of now single api is used so it will take response of that type
-    override fun response200(response: Response<List<CatResModel>>, status: Status): ResponseApi {
+    override fun response200(response: Any, status: Status): ResponseApi {
 
         //we can check the api type
         if (status == Status.CATDETAILS)  {
-            val res =response.body()
-            return ResponseApi.success(res as List<CatResModel>, status)
+            val r=response as Response<*>
+            val res =r.body()
+            return ResponseApi.success(res as List<*>, status)
         }
         else
             return ResponseApi.fail("Something Went Wrong Please try again", status)
@@ -49,11 +50,11 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
 
     suspend fun getCatData() : ResponseApi {
         val response  =  repository.getCatData()
-        var responseApi:ResponseApi?=null
+        var responseApi: ResponseApi?=null
 
         if(response.isSuccessful && response.body()!=null)
         {
-          responseApi= handleResponse(response,Status.CATDETAILS)
+          responseApi= handleResponse(response, Status.CATDETAILS)
 
         }
         else
@@ -63,7 +64,7 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
         return responseApi
     }
 
-    private fun handleResponse(response: Response<List<CatResModel>>, apiTypestatus: Status): ResponseApi{
+    private fun handleResponse(response: Response<List<CatResModel>>, apiTypestatus: Status): ResponseApi {
         return when (response.code()) {
             RES_200 -> response200(response, apiTypestatus)
             RES_401 -> response401(apiTypestatus)

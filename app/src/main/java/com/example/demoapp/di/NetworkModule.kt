@@ -1,13 +1,12 @@
-package com.example.demoapp.core.di
+package com.example.demoapp.di
 
-import com.example.demoapp.catmodule.data.datasource.remote.ApiInterface
-import com.example.demoapp.catmodule.data.datasource.remote.CatListRepoImpl
-import com.example.demoapp.catmodule.data.repository.CatListRepo
+import com.example.demoapp.data.datasource.remote.ApiInterface
+import com.example.demoapp.data.repository.CatListRepoImpl
+import com.example.demoapp.domain.repository.CatListRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

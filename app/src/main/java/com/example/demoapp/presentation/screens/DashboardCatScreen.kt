@@ -1,4 +1,4 @@
-package com.example.demoapp.catmodule.presentation.screens
+package com.example.demoapp.presentation.screens
 
 
 import androidx.compose.foundation.layout.Arrangement
@@ -26,29 +26,29 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.demoapp.R
-import com.example.demoapp.catmodule.data.model.CatResModel
-import com.example.demoapp.catmodule.presentation.viewmodel.CatListViewmodel
+import com.example.demoapp.domain.model.CatResModel
+import com.example.demoapp.presentation.viewmodel.CatListViewmodel
 import com.example.demoapp.core.common.Status
 
 @Composable
 fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
-    val userState by catlistViewmodel.catListState.collectAsState()
+    val catListState by catlistViewmodel.catListState.collectAsState()
 
 
-    when (userState.status) {
+    when (catListState.status) {
             Status.LOADING -> {
                 CircularProgressBar()
 
             }
 
             Status.SUCCESS -> {
-            val catlist = userState.data as List<CatResModel>
+            val catlist = catListState.data as List<CatResModel>
                 ShowList(catlist = catlist)
 
             }
 
             Status.FAIL -> {
-                ShowErrorText(errorMsg = userState.data.toString())
+                ShowErrorText(errorMsg = catListState.data.toString())
 
             }
 
@@ -58,7 +58,7 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
         }
 
             else -> {
-                ShowErrorText(errorMsg = userState.data.toString())
+                ShowErrorText(errorMsg = catListState.data.toString())
             }
         }
 
@@ -91,7 +91,6 @@ fun ShowList(catlist: List<CatResModel>) {
 fun ImageItem(imageUrl: String) {
     val painter = rememberImagePainter(data = imageUrl, builder = {
         transformations(CircleCropTransformation())
-       //error(R.drawable.error_img)
 
     }
     )

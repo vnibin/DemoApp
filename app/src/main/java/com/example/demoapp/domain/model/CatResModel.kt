@@ -1,4 +1,4 @@
-package com.example.demoapp.catmodule.data.model
+package com.example.demoapp.domain.model
 
 import com.google.gson.annotations.SerializedName
 

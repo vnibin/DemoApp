@@ -1,9 +1,8 @@
-package com.example.demoapp.catmodule.data.datasource.remote
+package com.example.demoapp.data.repository
 
-import com.example.demoapp.catmodule.data.model.CatResModel
-import com.example.demoapp.catmodule.data.repository.CatListRepo
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
+import com.example.demoapp.data.datasource.remote.ApiInterface
+import com.example.demoapp.domain.model.CatResModel
+import com.example.demoapp.domain.repository.CatListRepo
 import retrofit2.Response
 import javax.inject.Inject
 
