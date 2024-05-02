@@ -23,7 +23,7 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
     override fun response200(response: Any, status: Status): ResponseApi {
 
         //we can check the api type
-        if (status == Status.CATDETAILS)  {
+        if (status == Status.CATLIST)  {
             val r=response as Response<*>
             val res =r.body()
             return ResponseApi.success(res as List<*>, status)
@@ -54,12 +54,12 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
 
         if(response.isSuccessful && response.body()!=null)
         {
-          responseApi= handleResponse(response, Status.CATDETAILS)
+          responseApi= handleResponse(response, Status.CATLIST)
 
         }
         else
         {
-           responseApi= responseFail(Status.CATDETAILS )
+           responseApi= responseFail(Status.CATLIST )
         }
         return responseApi
     }

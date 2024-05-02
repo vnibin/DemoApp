@@ -12,7 +12,7 @@ enum class Status {
 
     FAIL_400,
 
-    CATDETAILS
+    CATLIST
 
 
 }

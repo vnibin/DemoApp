@@ -1,5 +1,7 @@
 package com.example.demoapp.di
 
+import android.provider.SyncStateContract.Constants
+import com.example.demoapp.core.common.AppConstants
 import com.example.demoapp.data.datasource.remote.ApiInterface
 import com.example.demoapp.data.repository.CatListRepoImpl
 import com.example.demoapp.domain.repository.CatListRepo
@@ -26,7 +28,7 @@ object NetworkModule {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         httpClient.addInterceptor(logging)
-        return Retrofit.Builder().baseUrl("https://api.thecatapi.com/")
+        return Retrofit.Builder().baseUrl(AppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
             .build()

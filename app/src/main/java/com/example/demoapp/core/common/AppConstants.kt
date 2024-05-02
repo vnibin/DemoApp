@@ -4,6 +4,8 @@ class AppConstants {
 
     companion object {
 
+        const val BASE_URL="https://api.thecatapi.com/"
+
         const val RES_200 = 200
 
 

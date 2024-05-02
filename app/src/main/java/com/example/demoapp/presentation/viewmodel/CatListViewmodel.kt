@@ -16,7 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CatListViewmodel @Inject constructor(val catListRemoteUseCase: CatListRemoteUseCase) : ViewModel() {
 
-    private val _catListState = MutableStateFlow(ResponseApi.loading(Status.CATDETAILS))
+    private val _catListState = MutableStateFlow(ResponseApi.loading(Status.CATLIST))
     val catListState: StateFlow<ResponseApi> = _catListState
     init {
         getCatData()
