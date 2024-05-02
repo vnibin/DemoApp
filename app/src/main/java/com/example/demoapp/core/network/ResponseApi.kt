@@ -26,7 +26,7 @@ class ResponseApi
 
 
         fun fail400(data: Any, apiTypeStatus: Status?): ResponseApi {
-            return ResponseApi(Status.FAIL_400, data, apiTypeStatus)
+            return ResponseApi(Status.FAIL_400,null, apiTypeStatus)
         }
 
 

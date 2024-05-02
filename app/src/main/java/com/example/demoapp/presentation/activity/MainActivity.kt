@@ -22,7 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val myViewmodel=ViewModelProvider(this).get(CatListViewmodel::class.java)
+
         setContent {
             DemoAppTheme {
                 UserScreen()

@@ -29,7 +29,7 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
             return ResponseApi.success(res as List<*>, status)
         }
         else
-            return ResponseApi.fail("Something Went Wrong Please try again", status)
+            return ResponseApi.fail(null, status)
 
     }
 
@@ -44,7 +44,7 @@ class CatListRemoteUseCase @Inject constructor(private val repository: CatListRe
     }
 
     override fun responseFail(status: Status): ResponseApi {
-        return ResponseApi.fail("Something Went Wrong Please try again", status)
+        return ResponseApi.fail(null, status)
     }
 
 

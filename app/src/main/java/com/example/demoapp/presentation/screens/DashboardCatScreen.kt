@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
@@ -48,7 +49,13 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
             }
 
             Status.FAIL -> {
-                ShowErrorText(errorMsg = catListState.data.toString())
+                ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
+
+            }
+            Status.FAIL_400->
+            {
+
+                ShowErrorText(errorMsg = stringResource(R.string.bad_request))
 
             }
 
@@ -58,7 +65,8 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
         }
 
             else -> {
-                ShowErrorText(errorMsg = catListState.data.toString())
+                ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
+
             }
         }
 
