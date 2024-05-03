@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -82,7 +83,8 @@ fun ShowList(catlist: List<CatResModel>) {
 
 
     LazyVerticalGrid(
-        columns = GridCells.Fixed(2)
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.testTag("grid")
     ) {
 
 
@@ -93,6 +95,8 @@ fun ShowList(catlist: List<CatResModel>) {
             }
         }
     }
+
+
 }
 
 @Composable
