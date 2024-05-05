@@ -1,9 +1,7 @@
-package com.example.demoapp.core.network
+package com.example.demoapp.domain.usecase
 
-import com.example.demoapp.domain.model.CatResModel
 import com.example.demoapp.core.common.Status
-import com.google.gson.JsonObject
-import retrofit2.Response
+import com.example.demoapp.core.network.ResponseApi
 
 abstract class NetworkUseCase {
 
