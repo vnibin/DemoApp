@@ -1,5 +1,7 @@
 package com.example.demoapp
 
+import com.example.demoapp.core.common.AppConstants
+import com.example.demoapp.core.common.Helper
 import com.example.demoapp.data.datasource.remote.ApiInterface
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
@@ -43,15 +45,13 @@ class CatListApiTest {
     @Test
     fun getActualCatList()=runTest {
         val mockResponse=MockResponse()
-        val content= Helper.readFileResource("/response.json")
+        val content= Helper.readFileResource(AppConstants.JSON_PATH)
         mockResponse.setResponseCode(200)
         mockResponse.setBody(content)
         mockWebServer.enqueue(mockResponse)
 
         val response =apiInterface.getAllCats(10)
         mockWebServer.takeRequest()
-
-        Assert.assertEquals(false,response.body()!!.isEmpty())
 
         Assert.assertEquals(10, response.body()!!.size)
 

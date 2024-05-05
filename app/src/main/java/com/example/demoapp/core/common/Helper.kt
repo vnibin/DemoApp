@@ -1,4 +1,4 @@
-package com.example.demoapp
+package com.example.demoapp.core.common
 
 import java.io.InputStreamReader
 
