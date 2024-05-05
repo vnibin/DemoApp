@@ -1,6 +1,6 @@
-package com.example.demoapp.catmodule.data.datasource.remote
+package com.example.demoapp.data.datasource.remote
 
-import com.example.demoapp.catmodule.data.model.CatResModel
+import com.example.demoapp.domain.model.CatResModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

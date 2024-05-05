@@ -4,7 +4,6 @@ enum class Status {
 
     LOADING,
 
-
     SUCCESS,
 
     FAIL,
@@ -13,10 +12,7 @@ enum class Status {
 
     FAIL_400,
 
-
-    ON_SHOW_NO_INTERNET,
-
-    CATDETAILS
+    CATLIST
 
 
 }

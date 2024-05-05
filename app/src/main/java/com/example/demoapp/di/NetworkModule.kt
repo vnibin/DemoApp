@@ -1,13 +1,14 @@
-package com.example.demoapp.core.di
+package com.example.demoapp.di
 
-import com.example.demoapp.catmodule.data.datasource.remote.ApiInterface
-import com.example.demoapp.catmodule.data.datasource.remote.CatListRepoImpl
-import com.example.demoapp.catmodule.data.repository.CatListRepo
+import android.provider.SyncStateContract.Constants
+import com.example.demoapp.core.common.AppConstants
+import com.example.demoapp.data.datasource.remote.ApiInterface
+import com.example.demoapp.data.repository.CatListRepoImpl
+import com.example.demoapp.domain.repository.CatListRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -27,7 +28,7 @@ object NetworkModule {
         val logging = HttpLoggingInterceptor()
         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
         httpClient.addInterceptor(logging)
-        return Retrofit.Builder().baseUrl("https://api.thecatapi.com/")
+        return Retrofit.Builder().baseUrl(AppConstants.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(httpClient.build())
             .build()
