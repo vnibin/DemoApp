@@ -28,6 +28,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.demoapp.R
+import com.example.demoapp.core.common.AppConstants
 import com.example.demoapp.domain.model.CatResModel
 import com.example.demoapp.presentation.viewmodel.CatListViewmodel
 import com.example.demoapp.core.common.Status
@@ -65,7 +66,7 @@ fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
 
         }
 
-            else -> {
+        else -> {
                 ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
 
             }
@@ -84,7 +85,7 @@ fun ShowList(catlist: List<CatResModel>) {
 
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
-        modifier = Modifier.testTag("grid")
+        modifier = Modifier.testTag(AppConstants.GRID)
     ) {
 
 
