@@ -7,7 +7,6 @@ import com.example.demoapp.core.common.AppConstants.Companion.RES_400
 import com.example.demoapp.core.common.AppConstants.Companion.RES_401
 import com.example.demoapp.core.common.AppConstants.Companion.RES_FAIL
 import com.example.demoapp.core.common.Status
-import com.example.demoapp.core.network.NetworkUseCase
 import com.example.demoapp.core.network.ResponseApi
 import retrofit2.Response
 import javax.inject.Inject
