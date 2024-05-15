@@ -1,5 +1,6 @@
 package com.example.demoapp.di
 
+import android.content.Context
 import com.example.demoapp.core.common.AppConstants
 import com.example.demoapp.data.datasource.remote.ApiInterface
 import com.example.demoapp.data.datasource.remote.repository.CatListRepoImpl
@@ -7,6 +8,7 @@ import com.example.demoapp.domain.repository.CatListRepo
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -45,6 +47,11 @@ object NetworkModule {
     fun provideRepository(apiInterface: ApiInterface) : CatListRepo
     {
         return CatListRepoImpl(apiInterface)
+    }
+
+    @Provides
+    fun provideApplicationContext(@ApplicationContext context: Context): Context {
+        return context
     }
 
 
