@@ -28,6 +28,7 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.demoapp.R
 import com.example.demoapp.core.common.AppConstants
+import com.example.demoapp.core.common.Dimens
 import com.example.demoapp.presentation.viewmodel.CatListViewmodel
 import com.example.demoapp.domain.model.CatModel
 
@@ -88,7 +89,7 @@ fun ImageItem(imageUrl: String) {
         painter = painter,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier.size(150.dp),
+        modifier = Modifier.size(Dimens.dp150),
 
     )
 }
