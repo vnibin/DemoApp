@@ -3,7 +3,7 @@ package com.example.demoapp
 
 import com.example.demoapp.core.common.AppConstants
 import com.example.demoapp.core.common.Helper
-import com.example.demoapp.data.datasource.remote.ApiInterface
+import com.example.demoapp.data.datasource.remote.api.ApiInterface
 import kotlinx.coroutines.test.runTest
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

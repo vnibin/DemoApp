@@ -1,4 +1,4 @@
-package com.example.demoapp.data.datasource.remote
+package com.example.demoapp.data.datasource.remote.api
 
 import com.example.demoapp.data.datasource.remote.dto.CatDto
 import retrofit2.Response

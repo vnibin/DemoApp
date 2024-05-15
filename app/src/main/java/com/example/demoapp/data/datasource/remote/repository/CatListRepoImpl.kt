@@ -1,8 +1,7 @@
 package com.example.demoapp.data.datasource.remote.repository
 
 import com.example.demoapp.core.common.Resource
-import com.example.demoapp.data.datasource.remote.ApiInterface
-import com.example.demoapp.data.datasource.remote.dto.CatDto
+import com.example.demoapp.data.datasource.remote.api.ApiInterface
 import com.example.demoapp.data.datasource.remote.mapper.toDomainCatModel
 import com.example.demoapp.domain.model.CatModel
 import com.example.demoapp.domain.repository.CatListRepo
@@ -12,7 +11,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
-import retrofit2.Response
 import javax.inject.Inject
 
 
