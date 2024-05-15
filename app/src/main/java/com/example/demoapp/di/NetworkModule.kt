@@ -2,7 +2,7 @@ package com.example.demoapp.di
 
 import android.content.Context
 import com.example.demoapp.core.common.AppConstants
-import com.example.demoapp.data.datasource.remote.ApiInterface
+import com.example.demoapp.data.datasource.remote.api.ApiInterface
 import com.example.demoapp.data.datasource.remote.repository.CatListRepoImpl
 import com.example.demoapp.domain.repository.CatListRepo
 import dagger.Module
@@ -49,10 +49,6 @@ object NetworkModule {
         return CatListRepoImpl(apiInterface)
     }
 
-    @Provides
-    fun provideApplicationContext(@ApplicationContext context: Context): Context {
-        return context
-    }
 
 
 }
