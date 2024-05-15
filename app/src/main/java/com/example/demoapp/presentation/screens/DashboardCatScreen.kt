@@ -16,7 +16,6 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
@@ -29,58 +28,35 @@ import coil.compose.rememberImagePainter
 import coil.transform.CircleCropTransformation
 import com.example.demoapp.R
 import com.example.demoapp.core.common.AppConstants
-import com.example.demoapp.domain.model.CatResModel
+import com.example.demoapp.core.common.Dimens
 import com.example.demoapp.presentation.viewmodel.CatListViewmodel
-import com.example.demoapp.core.common.Status
+import com.example.demoapp.domain.model.CatModel
 
 @Composable
 fun UserScreen(catlistViewmodel: CatListViewmodel = viewModel()) {
-    val catListState by catlistViewmodel.catListState.collectAsState()
-
-
-    when (catListState.status) {
-            Status.LOADING -> {
-                CircularProgressBar()
-
-            }
-
-            Status.SUCCESS -> {
-            val catlist = catListState.data as List<CatResModel>
-                ShowList(catlist = catlist)
-
-            }
-
-            Status.FAIL -> {
-                ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
-
-            }
-            Status.FAIL_400->
-            {
-
-                ShowErrorText(errorMsg = stringResource(R.string.bad_request))
-
-            }
-
-        Status.AUTH_FAIL -> {
-            //we'll call the token generation api and again call the same api
-
-        }
-
-        else -> {
-                ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
-
-            }
-        }
 
 
 
+    val catListState = catlistViewmodel.catListState.collectAsState()
+
+    if (catListState.value.isLoading) {
+        CircularProgressBar()
+
+    } else if (!catListState.value.errorMsg.isNullOrEmpty()) {
+        ShowErrorText(errorMsg = stringResource(R.string.something_went_wrong_please_try_again))
+
+    }
+
+    if (catListState.value.catList?.isNotEmpty()!!) {
+        ShowList(catlist = catListState.value.catList!!)
 
 
+    }
 
 }
 
 @Composable
-fun ShowList(catlist: List<CatResModel>) {
+fun ShowList(catlist: List<CatModel>) {
 
 
     LazyVerticalGrid(
@@ -113,7 +89,7 @@ fun ImageItem(imageUrl: String) {
         painter = painter,
         contentDescription = null,
         contentScale = ContentScale.Crop,
-        modifier = Modifier.size(150.dp),
+        modifier = Modifier.size(Dimens.dp150),
 
     )
 }

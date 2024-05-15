@@ -1,9 +1,12 @@
 package com.example.demoapp.domain.repository
 
-import com.example.demoapp.domain.model.CatResModel
-import retrofit2.Response
+import com.example.demoapp.core.common.Resource
+import com.example.demoapp.domain.model.CatModel
+import kotlinx.coroutines.flow.Flow
 
 interface CatListRepo {
 
-    suspend fun getCatData() : Response<List<CatResModel>>
+     fun getCatData() : Flow<Resource<List<CatModel>>>
 }
+
+

@@ -1,5 +1,6 @@
 package com.example.demoapp
 
+
 import com.example.demoapp.core.common.AppConstants
 import com.example.demoapp.core.common.Helper
 import com.example.demoapp.data.datasource.remote.ApiInterface
@@ -13,10 +14,13 @@ import org.junit.Test
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class CatListApiTest {
+class CatListApiTest (){
 
     lateinit var mockWebServer: MockWebServer
     lateinit var apiInterface: ApiInterface
+
+
+
 
     @Before
     fun setUp()
@@ -37,7 +41,7 @@ class CatListApiTest {
         val response =apiInterface.getAllCats(10)
         mockWebServer.takeRequest()
 
-        Assert.assertEquals(true,response.body()!!.isEmpty())
+        Assert.assertEquals(true,response.isEmpty())
 
 
     }
@@ -53,7 +57,7 @@ class CatListApiTest {
         val response =apiInterface.getAllCats(10)
         mockWebServer.takeRequest()
 
-        Assert.assertEquals(10, response.body()!!.size)
+        Assert.assertEquals(10, response.size)
 
     }
 
