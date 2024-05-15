@@ -1,5 +1,5 @@
 - This project is a demonstration of Android Clean Architecture pattern and it used one of the api from public api                         https://github.com/public-apis/public-apis.
-- The App basically displays list of an animal(cat) in vertical grid format. This project used Corutines for network call and used         jetpack Compose for Ui building and Coil is used for Image Loading.
+- The App basically displays list of an animal(cat) in vertical grid format. This project used Coroutines for network call and used         jetpack Compose for Ui building and Coil for Image Loading.
 - The Project mainly focused on applying the principles of Clean Architecure.
 -  The project segregated into three parts ie
   
