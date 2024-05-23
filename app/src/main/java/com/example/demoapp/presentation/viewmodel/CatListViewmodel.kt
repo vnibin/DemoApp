@@ -6,6 +6,7 @@ import com.example.demoapp.core.common.Resource
 import com.example.demoapp.domain.usecase.CatListUseCase
 import com.example.demoapp.presentation.state.CatListState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.launchIn

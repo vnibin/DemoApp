@@ -13,7 +13,6 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.Mockito.mock
 
 
 class ComposeUiTest {
